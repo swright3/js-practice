@@ -10,5 +10,23 @@ async function fetchQuote() {
     }
 }
 
+async function fetchTags() {
+    try {
+        const res = await fetch('https://api.quotable.io/tags')
+        if (!res.ok) {throw `Response status code: ${res.status}`}
+        const data = await res.json()
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+function logTags(tags) {
+    for (const tag of tags) {
+        console.log(tag.name)
+    }
+}
+
+fetchTags()
+
 const button = document.getElementById('newQuote')
 button.addEventListener('click', fetchQuote)
