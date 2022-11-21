@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --LIGHT-COLOR: rgb(233, 233, 233);
+    --DARK-COLOR: #222;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Lato', 'Times New Roman', Times, serif;
+    background-image: url('./janko-ferlic-sfL_QOnmy00-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#pageName {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 500;
+    background-color: var(--DARK-COLOR);
+    padding: 0.3em 0.5em;
+    color: var(--LIGHT-COLOR);
+    border-radius: 0.15em;
+    border: 2px solid var(--LIGHT-COLOR);
+    box-shadow: 3px 0 7px var(--DARK-COLOR);
+}
+
+.container {
+    background-color: var(--LIGHT-COLOR);
+    width: 30rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    align-items: center;
+    padding: 2rem;
+    box-shadow: 3px 0 7px var(--DARK-COLOR);
+}
+
+.container > * {
+    max-width: 100%;
+}
+
+#quote {
+    white-space: wrap;
+    overflow-wrap: break-word;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+#name {
+    font-size: 2rem;
+    font-weight: 100;
+    color: rgb(114, 16, 16);
+}
+
+#newQuote {
+    background-color: var(--DARK-COLOR);
+    color: var(--LIGHT-COLOR);
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+#attribution {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: rgba(255, 255, 255, 0.404);
+}
+
