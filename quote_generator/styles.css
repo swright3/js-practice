@@ -33,7 +33,7 @@ body {
 
 #pageName {
     display: block;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 500;
     background-color: var(--DARK-COLOR);
     padding: 0.3em 0.5em;
@@ -41,6 +41,12 @@ body {
     border-radius: 0.15em;
     border: 2px solid var(--LIGHT-COLOR);
     box-shadow: 3px 0 7px var(--DARK-COLOR);
+}
+
+@media screen and (min-width: 25rem) {
+    #pageName {
+        font-size: 1.75rem;
+    }
 }
 
 .container {
@@ -79,10 +85,15 @@ body {
 #newQuote {
     background-color: var(--DARK-COLOR);
     color: var(--LIGHT-COLOR);
-    border: none;
+    border: 2px solid var(--LIGHT-COLOR);
     border-radius: 0.25rem;
     font-size: 0.9rem;
     padding: 0.5rem;
+    box-shadow: 0 0 3px var(--DARK-COLOR);
+}
+
+#newQuote:active {
+    box-shadow: none;
 }
 
 #attribution {
