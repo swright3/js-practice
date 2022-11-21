@@ -45,7 +45,8 @@ body {
 
 .container {
     background-color: var(--LIGHT-COLOR);
-    width: 30rem;
+    min-width: 20rem;
+    max-width: 35rem;
     border-radius: 0.5rem;
     display: flex;
     flex-flow: column nowrap;
@@ -53,6 +54,7 @@ body {
     align-items: center;
     padding: 2rem;
     box-shadow: 3px 0 7px var(--DARK-COLOR);
+    margin-inline: 2rem;
 }
 
 .container > * {
@@ -70,6 +72,8 @@ body {
     font-size: 2rem;
     font-weight: 100;
     color: rgb(114, 16, 16);
+    text-align: center;
+    margin-bottom: 0.5rem;
 }
 
 #newQuote {
