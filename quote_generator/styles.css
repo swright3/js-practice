@@ -107,47 +107,111 @@ body {
     filter: invert(14%) sepia(0%) saturate(1729%) hue-rotate(209deg) brightness(99%) contrast(102%);
 }
 
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+        top: 100%;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        top: 40%;
+    }
+}
+
 @keyframes disappear {
     0% {
-        transform: scaleX(1)
-    }
-    99% {
-        transform: scaleX(0);
-    }
-    100% {
-        transform: scaleX(0);
-        bottom: 99
-    }
-}
-
-@keyframes reappear {
-    0% {
-        /* top: 0; */
-        transform: scaleX(0)
+        opacity: 1;
+        transform: scale(1);
+        top: 40%;
     }
     100% {
-        transform: scaleX(1);
+        opacity: 0;
+        transform: scale(0);
+        top: 100%;
     }
-}
-
-.invisible {
-    background-color: green;
-    opacity: 0;
 }
 
 .options {
-    background-color: white;
     position: absolute;
-    animation: reappear;
-    animation-duration: 200ms;
-    animation-fill-mode: forwards;
+    top: 100%;
+    background-color: var(--LIGHT-COLOR);
+    z-index: 2;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
 
-.offpage {
-    animation: disappear;
-    animation-duration: 200ms;
+.options-appear {
+    animation: appear;
+    animation-duration: 0.25s;
     animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 }
+
+.options-disappear {
+    animation: disappear;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+#optionsForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.authorLabel {
+    text-align: center;
+    margin-bottom: 0.1rem;
+}
+
+.authorField {
+    line-height: 1.25em;
+    font-size: 1.2rem;
+    text-indent: 0.25em;
+    margin-bottom: 0.5rem;
+    outline: none;
+    border-radius: 0.2rem;
+    border: 1px solid var(--DARK-COLOR);
+}
+
+#toggleTags {
+    border: none;
+    margin-bottom: 0.5rem;
+}
+
+.submitOptions {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+}
+
+.darkener {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--DARK-COLOR);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.darkener-visible {
+    opacity: 0.7;
+    transition: opacity 0.25s ease-out;
+}
+
+.darkener-invisible {
+    opacity: 0;
+    transition: opacity 0.25s ease-in;
+}
+
+/* tags */
 
 .outerTagContainer {
     height: 16rem;
@@ -171,3 +235,10 @@ body {
     color: rgba(255, 255, 255, 0.404);
 }
 
+/* ANIMATION UTILITY CLASSES */
+
+.no-transition {
+    transition: none;
+}
+
+/* ANIMATION UTILITY CLASSES END */

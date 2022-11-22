@@ -54,7 +54,7 @@ function constructUrl() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const newQuoteButton = document.getElementById('newQuote')
     newQuoteButton.addEventListener('click', () => fetchQuote('https://api.quotable.io/random'))
 
@@ -66,18 +66,28 @@ window.addEventListener('DOMContentLoaded', () => {
         fetchQuote(apiUrl)
     })
 
-    const options = document.getElementById('options')
-    options.classList.add('options')
-    options.classList.add('offpage')
-    options.classList.remove('invisible')
     const optionsButton = document.getElementById('optionsButton')
     optionsButton.addEventListener('click', () => {
+        const darkener = document.getElementById('darkener')
+        if (darkener.matches('.darkener-visible')) {
+            darkener.classList.remove('darkener-visible')
+            darkener.classList.add('darkener-invisible')
+        } else {
+            darkener.classList.remove('darkener-invisible')
+            darkener.classList.add('darkener-visible')
+        }
         const options = document.querySelector('.options')
-        options.matches('.offpage') 
-            ? options.classList.remove('offpage')
-            : options.classList.add('offpage')
+        if (options.matches('.options-appear')) {
+            options.classList.remove('options-appear')
+            options.classList.add('options-disappear')
+        } else {
+            options.classList.add('options-appear')
+            options.classList.remove('options-disappear')
+        }
     })
 
+    const tagContainer = document.querySelector('.outerTagContainer')
+    tagContainer.classList.remove('no-transition')
     const toggleTagButton = document.getElementById('toggleTags')
     toggleTagButton.addEventListener('click', () => {
         const tagContainer = document.querySelector('.outerTagContainer')

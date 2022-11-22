@@ -21,19 +21,21 @@
                 New Quote
             </button>
             <img src="./cog_1.svg" width="50px" height="50px" id="optionsButton" class="cog">
-            <div class="invisible" id="options">
-                <form id="optionsForm">
-                    <button type="button" id="toggleTags">Show/Hide Tags</button>
-                    <div class="outerTagContainer hidden">
-        
-                    </div>
-                    <button type="submit">Search With Tags</button>
-                </form>
-            </div>
         </section>
     </main>
-    
+    <div class="options" id="options">
+        <form id="optionsForm">
+            <label for="authorField" class="authorLabel">Author: </label>
+            <input type="text" name="authorField" class="authorField">
+            <button type="button" id="toggleTags"><span class="arrow">></span> Show/Hide Tags</button>
+            <div class="outerTagContainer hidden no-transition">
+
+            </div>
+            <button type="submit" class="submitOptions">✖</button>
+        </form>
+    </div>
     <p id="attribution">Photo by 🇸🇮 Janko Ferlič on Unsplash</p>
+    <div id="darkener" class="darkener"></div>
 </body>
 <script src="./main.js"></script>
 </html>
