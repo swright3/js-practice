@@ -110,15 +110,17 @@ window.addEventListener('load', () => {
         button.addEventListener('click', (event) => {
             const body = document.getElementsByTagName('body')[0]
             body.classList.remove(...body.classList)
-            body.classList.add(event.target.alt)
+            body.classList.add(event.target.id)
             const themeButtonContainer = document.querySelector('.themeContainer')
             const themeButtons = themeButtonContainer.children
             for (const button of themeButtons) {
                 if (button.classList.contains('selectedTheme')) {
                     button.classList.remove('selectedTheme')
                 }
-                if (button.getAttribute('alt') === event.target.alt) {
+                if (button.getAttribute('id') === event.target.id) {
                     button.classList.add('selectedTheme')
+                    const attribution = document.querySelector('.attributionName')
+                    attribution.innerText = event.target.alt
                 }
             }
         })

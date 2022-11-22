@@ -337,7 +337,8 @@ body {
     position: fixed;
     bottom: 0;
     right: 0;
-    color: rgba(255, 255, 255, 0.404);
+    background-color: rgba(0, 0, 0, 0.203);
+    color: rgba(221, 221, 221, 0.596);
 }
 
 /* ANIMATION UTILITY CLASSES */
