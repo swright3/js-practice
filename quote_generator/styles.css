@@ -6,11 +6,13 @@
     padding: 0;
     --LIGHT-COLOR: rgb(233, 233, 233);
     --DARK-COLOR: #222;
+    --HIGHLIGHT-COLOR: rgb(114, 16, 16);
 }
 
 html, body {
     width: 100%;
     height: 100%;
+    caret-color: transparent;
 }
 
 body {
@@ -22,6 +24,41 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.theme1 {
+    background-image: url('./images/janko-ferlic-sfL_QOnmy00-unsplash.jpg');
+}
+
+.theme2 {
+    background-image: url('./images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg');
+    /*Ivana Cajina*/
+}
+
+.theme3 {
+    background-image: url('./images/daniel-leone-g30P1zcOzXo-unsplash.jpg');
+    /*daniel leone*/
+}
+
+.theme4 {
+    background-image: url('./images/garrett-sears-rXVFCA3fQ4I-unsplash.jpg');
+    /*garrett sears*/
+}
+
+.theme5 {
+    background-image: url('./images/patrick-fore-0gkw_9fy0eQ-unsplash.jpg');
+}
+
+.theme6 {
+    background-image: url('./images/aaron-burden-y02jEX_B0O0-unsplash.jpg');
+}
+
+.theme7 {
+    background-image: url('./images/clark-young-QdRnZlzYJPA-unsplash.jpg');
+}
+
+.theme8 {
+    background-image: url('./images/pexels-dilara-irem-12414385.jpg');
 }
 
 .hero {
@@ -79,7 +116,7 @@ body {
 #name {
     font-size: 2rem;
     font-weight: 100;
-    color: rgb(114, 16, 16);
+    color: var(--HIGHLIGHT-COLOR);
     text-align: center;
     margin-bottom: 0.5rem;
 }
@@ -107,6 +144,11 @@ body {
     filter: invert(14%) sepia(0%) saturate(1729%) hue-rotate(209deg) brightness(99%) contrast(102%);
 }
 
+.cog:active {
+    transform: rotateZ(360deg);
+    transition: transform 0.5s linear;
+}
+
 @keyframes appear {
     0% {
         opacity: 0;
@@ -116,7 +158,7 @@ body {
     100% {
         opacity: 1;
         transform: scale(1);
-        top: 40%;
+        top: 25%;
     }
 }
 
@@ -124,7 +166,7 @@ body {
     0% {
         opacity: 1;
         transform: scale(1);
-        top: 40%;
+        top: 25%;
     }
     100% {
         opacity: 0;
@@ -138,9 +180,13 @@ body {
     top: 100%;
     background-color: var(--LIGHT-COLOR);
     z-index: 2;
-    padding: 1rem;
+    padding: 2rem 1rem 1rem;
     border-radius: 0.5rem;
     margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .options-appear {
@@ -164,9 +210,33 @@ body {
     align-items: center;
 }
 
+.themeLabel {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.themeContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.theme {
+    width: 50px;
+    height: 50px;
+    box-shadow: 2px 2px 5px var(--DARK-COLOR);
+}
+
+.selectedTheme {
+    border: 4px solid var(--HIGHLIGHT-COLOR);
+    box-shadow: none;
+}
+
 .authorLabel {
     text-align: center;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
 }
 
 .authorField {
@@ -178,12 +248,14 @@ body {
     outline: none;
     border-radius: 0.2rem;
     border: 1px solid var(--DARK-COLOR);
+    caret-color: auto;
 }
 
 #toggleTags {
     border: none;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .submitOptions {
@@ -195,11 +267,6 @@ body {
     line-height: 1.5rem;
     width: 2rem;
     height: 2rem;
-}
-
-.cog:active {
-    transform: rotateZ(360deg);
-    transition: transform 0.5s linear;
 }
 
 .darkener {
@@ -227,20 +294,18 @@ body {
 /* tags */
 
 .outerTagContainer {
-    max-height: 50rem;
+    max-height: 25rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    transition: transform 400ms, max-height 500ms;
+    transition: 300ms transform 30ms, max-height 500ms;
     transform-origin: top;
 }
 
 @media screen and (min-width: 31.25rem) {
     .outerTagContainer {
+        max-height: 17rem;
         grid-template-columns: repeat(4, 1fr);
-    }
-
-    .authorField {
-        max-width: ;
+        transition: 300ms transform 50ms, max-height 500ms;
     }
 }
 
@@ -255,6 +320,17 @@ body {
     padding-inline: 0.1rem;
     display: flex;
     gap: 0.1rem;
+    align-items: center;
+}
+
+.tagLabel {
+    font-size: 0.9rem;
+}
+
+@media screen and (min-width: 31.25rem) {
+    .tagLabel {
+        font-size: 1rem;
+    }
 }
 
 #attribution {

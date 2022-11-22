@@ -1,6 +1,6 @@
 async function fetchQuote(url) {
     try {
-        console.log(url)
+        /*console.log(url)*/
         const res = await fetch(url)
         if (!res.ok) {throw `Response status code: ${res.status}`}
         const data = await res.json()
@@ -48,10 +48,12 @@ function logTags(tags) {
 function constructUrl() {
     const allTags = Array.from(document.getElementsByName('tags'))
     const selectedTags = allTags.filter(tag => tag.checked)
+    var url = 'https://api.quotable.io/random'
     if (selectedTags.length > 0) {
-        const url = 'https://api.quotable.io/random?tags='
+        url += '?tags='
         return selectedTags.reduce((newUrl,tag) => newUrl.concat(tag.value).concat('|'), url).slice(0,-1)
     }
+    return url
 }
 
 function optionsMenuToggle() {
@@ -74,13 +76,10 @@ function optionsMenuToggle() {
 }
 
 window.addEventListener('load', () => {
-    const newQuoteButton = document.getElementById('newQuote')
-    newQuoteButton.addEventListener('click', () => fetchQuote('https://api.quotable.io/random'))
-
-    const optionsForm = document.getElementById('optionsForm')
     fetchTags()
-    optionsForm.addEventListener('submit', (event) => {
-        event.preventDefault()
+
+    const newQuoteButton = document.getElementById('newQuote')
+    newQuoteButton.addEventListener('click', () => {
         const apiUrl = constructUrl()
         fetchQuote(apiUrl)
     })
@@ -104,4 +103,24 @@ window.addEventListener('load', () => {
             toggleTagButtonSpan.innerText = 'ᐳ Show'
         }
     })
+
+    const themeButtonContainer = document.querySelector('.themeContainer')
+    const themeButtons = themeButtonContainer.children
+    for (const button of themeButtons) {
+        button.addEventListener('click', (event) => {
+            const body = document.getElementsByTagName('body')[0]
+            body.classList.remove(...body.classList)
+            body.classList.add(event.target.alt)
+            const themeButtonContainer = document.querySelector('.themeContainer')
+            const themeButtons = themeButtonContainer.children
+            for (const button of themeButtons) {
+                if (button.classList.contains('selectedTheme')) {
+                    button.classList.remove('selectedTheme')
+                }
+                if (button.getAttribute('alt') === event.target.alt) {
+                    button.classList.add('selectedTheme')
+                }
+            }
+        })
+    }
 })

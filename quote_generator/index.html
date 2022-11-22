@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Quote Generator</title>
 </head>
-<body>
+<body class="theme1">
     <main class="hero">
         <h1 id="pageName">Javascript Quote Generator</h1>
         <section class="container">
@@ -20,20 +20,31 @@
             <button id="newQuote">
                 New Quote
             </button>
-            <img src="./cog_1.svg" width="50px" height="50px" id="optionsButton" class="cog">
+            <img src="./images/cog_1.svg" width="50px" height="50px" id="optionsButton" class="cog">
         </section>
     </main>
-    <div class="options" id="options">
+    <section class="options" id="options">
+        <p class="themeLabel">Theme:</p>
+        <div class="themeContainer">
+            <img src="./images/janko-ferlic-sfL_QOnmy00-unsplash.jpg" alt="theme1" class="theme selectedTheme">
+            <img src="./images/ivana-cajina-HDd-NQ_AMNQ-unsplash.jpg" alt="theme2"class="theme">
+            <img src="./images/daniel-leone-g30P1zcOzXo-unsplash.jpg" alt="theme3" class="theme">
+            <img src="./images/garrett-sears-rXVFCA3fQ4I-unsplash.jpg" alt="theme4" class="theme">
+            <img src="./images/patrick-fore-0gkw_9fy0eQ-unsplash.jpg" alt="theme5" class="theme">
+            <img src="./images/aaron-burden-y02jEX_B0O0-unsplash.jpg" alt="theme6" class="theme">
+            <img src="./images/clark-young-QdRnZlzYJPA-unsplash.jpg" alt="theme7" class="theme">
+            <img src="./images/pexels-dilara-irem-12414385.jpg" alt="theme8" class="theme">
+        </div>
         <form id="optionsForm">
             <label for="authorField" class="authorLabel">Author: </label>
-            <input type="text" name="authorField" class="authorField">
+            <input type="text" name="authorField" class="authorField" placeholder="This feature is not implemented">
             <button type="button" id="toggleTags"><span class="arrow">ᐳ Show</span> Tags</button>
             <div class="outerTagContainer hidden no-transition">
 
             </div>
-            <button type="submit" class="submitOptions">✖</button>
+            <button type="button" class="submitOptions">✖</button>
         </form>
-    </div>
+    </section>
     <p id="attribution">Photo by 🇸🇮 Janko Ferlič on Unsplash</p>
     <div id="darkener" class="darkener"></div>
 </body>
