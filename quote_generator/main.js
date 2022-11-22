@@ -54,6 +54,25 @@ function constructUrl() {
     }
 }
 
+function optionsMenuToggle() {
+    const darkener = document.getElementById('darkener')
+    if (darkener.matches('.darkener-visible')) {
+        darkener.classList.remove('darkener-visible')
+        darkener.classList.add('darkener-invisible')
+    } else {
+        darkener.classList.remove('darkener-invisible')
+        darkener.classList.add('darkener-visible')
+    }
+    const options = document.querySelector('.options')
+    if (options.matches('.options-appear')) {
+        options.classList.remove('options-appear')
+        options.classList.add('options-disappear')
+    } else {
+        options.classList.add('options-appear')
+        options.classList.remove('options-disappear')
+    }
+}
+
 window.addEventListener('load', () => {
     const newQuoteButton = document.getElementById('newQuote')
     newQuoteButton.addEventListener('click', () => fetchQuote('https://api.quotable.io/random'))
@@ -67,32 +86,22 @@ window.addEventListener('load', () => {
     })
 
     const optionsButton = document.getElementById('optionsButton')
-    optionsButton.addEventListener('click', () => {
-        const darkener = document.getElementById('darkener')
-        if (darkener.matches('.darkener-visible')) {
-            darkener.classList.remove('darkener-visible')
-            darkener.classList.add('darkener-invisible')
-        } else {
-            darkener.classList.remove('darkener-invisible')
-            darkener.classList.add('darkener-visible')
-        }
-        const options = document.querySelector('.options')
-        if (options.matches('.options-appear')) {
-            options.classList.remove('options-appear')
-            options.classList.add('options-disappear')
-        } else {
-            options.classList.add('options-appear')
-            options.classList.remove('options-disappear')
-        }
-    })
+    optionsButton.addEventListener('click', optionsMenuToggle)
+    const exitOptionsButton = document.querySelector('.submitOptions')
+    exitOptionsButton.addEventListener('click', optionsMenuToggle)
 
     const tagContainer = document.querySelector('.outerTagContainer')
     tagContainer.classList.remove('no-transition')
     const toggleTagButton = document.getElementById('toggleTags')
     toggleTagButton.addEventListener('click', () => {
+        const toggleTagButtonSpan = document.querySelector('.arrow')
         const tagContainer = document.querySelector('.outerTagContainer')
-        tagContainer.matches('.hidden') 
-            ? tagContainer.classList.remove('hidden')
-            : tagContainer.classList.add('hidden')
+        if (tagContainer.matches('.hidden')) {
+            tagContainer.classList.remove('hidden')
+            toggleTagButtonSpan.innerText = 'ᐯ Hide'
+        } else {
+            tagContainer.classList.add('hidden')
+            toggleTagButtonSpan.innerText = 'ᐳ Show'
+        }
     })
 })

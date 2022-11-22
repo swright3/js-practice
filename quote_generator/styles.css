@@ -140,6 +140,7 @@ body {
     z-index: 2;
     padding: 1rem;
     border-radius: 0.5rem;
+    margin: 0.5rem;
 }
 
 .options-appear {
@@ -169,10 +170,11 @@ body {
 }
 
 .authorField {
+    width: 60%;
     line-height: 1.25em;
     font-size: 1.2rem;
     text-indent: 0.25em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     outline: none;
     border-radius: 0.2rem;
     border: 1px solid var(--DARK-COLOR);
@@ -181,6 +183,7 @@ body {
 #toggleTags {
     border: none;
     margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .submitOptions {
@@ -188,6 +191,15 @@ body {
     top: 1rem;
     left: 1rem;
     font-size: 2rem;
+    border: none;
+    line-height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.cog:active {
+    transform: rotateZ(360deg);
+    transition: transform 0.5s linear;
 }
 
 .darkener {
@@ -204,6 +216,7 @@ body {
 .darkener-visible {
     opacity: 0.7;
     transition: opacity 0.25s ease-out;
+    pointer-events: auto;
 }
 
 .darkener-invisible {
@@ -214,18 +227,34 @@ body {
 /* tags */
 
 .outerTagContainer {
-    height: 16rem;
+    max-height: 50rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    transition: transform 400ms, height 500ms;
+    grid-template-columns: repeat(3, 1fr);
+    transition: transform 400ms, max-height 500ms;
     transform-origin: top;
 }
 
+@media screen and (min-width: 31.25rem) {
+    .outerTagContainer {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .authorField {
+        max-width: ;
+    }
+}
+
 .hidden {
-    height: 0rem;
+    max-height: 0rem;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 500ms, height 500ms;
+    transition: transform 500ms, max-height 500ms;
+}
+
+.tagContainer {
+    padding-inline: 0.1rem;
+    display: flex;
+    gap: 0.1rem;
 }
 
 #attribution {
