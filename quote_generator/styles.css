@@ -19,6 +19,7 @@ body {
     background-size: cover;
     background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -61,6 +62,7 @@ body {
     padding: 2rem;
     box-shadow: 3px 0 7px var(--DARK-COLOR);
     margin-inline: 2rem;
+    position: relative;
 }
 
 .container > * {
@@ -94,6 +96,72 @@ body {
 
 #newQuote:active {
     box-shadow: none;
+}
+
+.cog {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    filter: invert(14%) sepia(0%) saturate(1729%) hue-rotate(209deg) brightness(99%) contrast(102%);
+}
+
+@keyframes disappear {
+    0% {
+        transform: scaleX(1)
+    }
+    99% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(0);
+        bottom: 99
+    }
+}
+
+@keyframes reappear {
+    0% {
+        /* top: 0; */
+        transform: scaleX(0)
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.invisible {
+    background-color: green;
+    opacity: 0;
+}
+
+.options {
+    background-color: white;
+    position: absolute;
+    animation: reappear;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+}
+
+.offpage {
+    animation: disappear;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+}
+
+.outerTagContainer {
+    height: 16rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    transition: transform 400ms, height 500ms;
+    transform-origin: top;
+}
+
+.hidden {
+    height: 0rem;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 500ms, height 500ms;
 }
 
 #attribution {
