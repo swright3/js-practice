@@ -1,3 +1,4 @@
+/*Sends an async fetch request to the Quotable API and extracts the quote text and author from the response.*/
 async function fetchQuote(url) {
     try {
         /*console.log(url)*/
@@ -11,6 +12,8 @@ async function fetchQuote(url) {
     }
 }
 
+/*Gets a list of all the tags that can be appended to the fetch request to change the search results of the
+API call. Then it creates a list element for each one and appends them to the form in the options menu.*/
 async function fetchTags() {
     try {
         const res = await fetch('https://api.quotable.io/tags')
@@ -38,13 +41,7 @@ async function fetchTags() {
     }
 }
 
-function logTags(tags) {
-    console.log(tags.length)
-    for (const tag of tags) {
-        console.log(tag.name)
-    }
-}
-
+/*Appends the user's chosen tags to the end of the API url by extracting the input values from the options form.*/
 function constructUrl() {
     const allTags = Array.from(document.getElementsByName('tags'))
     const selectedTags = allTags.filter(tag => tag.checked)
@@ -56,6 +53,8 @@ function constructUrl() {
     return url
 }
 
+/*Toggles the options menu on and off the screen by adding and removing css classes. options is the menu
+itself and darkener is the filter that applies to the rest of the screen.*/
 function optionsMenuToggle() {
     const darkener = document.getElementById('darkener')
     if (darkener.matches('.darkener-visible')) {
@@ -75,20 +74,25 @@ function optionsMenuToggle() {
     }
 }
 
+/*Only runs once the dom and the styles have loaded.*/
 window.addEventListener('load', () => {
+    /*Populates the tags part of the options menu.*/
     fetchTags()
 
+    /*When user clicks new quote button, a request is sent using the tags the user has/hasn't selected.*/
     const newQuoteButton = document.getElementById('newQuote')
     newQuoteButton.addEventListener('click', () => {
         const apiUrl = constructUrl()
         fetchQuote(apiUrl)
     })
 
+    /*When the user clicks the cog in the bottom right, the options menu will be displayed.*/
     const optionsButton = document.getElementById('optionsButton')
     optionsButton.addEventListener('click', optionsMenuToggle)
     const exitOptionsButton = document.querySelector('.submitOptions')
     exitOptionsButton.addEventListener('click', optionsMenuToggle)
 
+    /*Implements show/hide tag functionality in the options menu.*/
     const tagContainer = document.querySelector('.outerTagContainer')
     tagContainer.classList.remove('no-transition')
     const toggleTagButton = document.getElementById('toggleTags')
@@ -104,6 +108,7 @@ window.addEventListener('load', () => {
         }
     })
 
+    /*Implements changing the background image depending on which one the user selects.*/
     const themeButtonContainer = document.querySelector('.themeContainer')
     const themeButtons = themeButtonContainer.children
     for (const button of themeButtons) {
